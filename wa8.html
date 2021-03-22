@@ -7,38 +7,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
     
-/* body {background-color: #141414;}
+body {background-color: #141414;}
 h1 {color: #BB86FC}
 h3 {color: #BB86FC}
 p {color: #d1d1d1}
 li {color: #d1d1d1}
 a {color: #BB86FC}
-     */
     
-body {background-color: #000000;}
-h1 {color: #000000}
-h3 {color: #000000}
-p {color: #000000}
-li {color: #000000}
-a {color: #000000}
-    
-
+.error {
+    color: red;
+}
 </style>
+    
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega@5"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-lite@4.8.1"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-embed@6"></script>
+    
 </head>
 <body>
+    
+<h3>Denver Policing Data</h3>
+    
+<div id="vis"></div>
+<script>
+(function(vegaEmbed) {
+  var spec = {"config": {"view": {"continuousWidth": 400, "continuousHeight": 300}}, "data": {"name": "data-78aaee666708f6955678d419d3016b66"}, "mark": "bar", "encoding": {"x": {"type": "nominal", "field": "Date"}, "y": {"type": "quantitative", "field": "# of Arrests"}}, "title": "Denver Arrest Frequency in November of 2012", "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json", "datasets": {"data-78aaee666708f6955678d419d3016b66": [{"Date": "2012-11-01", "# of Arrests": 44}, {"Date": "2012-11-02", "# of Arrests": 56}, {"Date": "2012-11-03", "# of Arrests": 36}, {"Date": "2012-11-04", "# of Arrests": 21}, {"Date": "2012-11-05", "# of Arrests": 25}, {"Date": "2012-11-06", "# of Arrests": 29}, {"Date": "2012-11-07", "# of Arrests": 26}, {"Date": "2012-11-08", "# of Arrests": 36}, {"Date": "2012-11-09", "# of Arrests": 23}, {"Date": "2012-11-10", "# of Arrests": 21}, {"Date": "2012-11-11", "# of Arrests": 40}, {"Date": "2012-11-12", "# of Arrests": 36}, {"Date": "2012-11-13", "# of Arrests": 44}, {"Date": "2012-11-14", "# of Arrests": 40}, {"Date": "2012-11-15", "# of Arrests": 32}, {"Date": "2012-11-16", "# of Arrests": 39}, {"Date": "2012-11-17", "# of Arrests": 43}, {"Date": "2012-11-18", "# of Arrests": 21}, {"Date": "2012-11-19", "# of Arrests": 30}, {"Date": "2012-11-20", "# of Arrests": 36}, {"Date": "2012-11-21", "# of Arrests": 30}, {"Date": "2012-11-22", "# of Arrests": 17}, {"Date": "2012-11-23", "# of Arrests": 39}, {"Date": "2012-11-24", "# of Arrests": 47}, {"Date": "2012-11-25", "# of Arrests": 27}, {"Date": "2012-11-26", "# of Arrests": 20}, {"Date": "2012-11-27", "# of Arrests": 27}, {"Date": "2012-11-28", "# of Arrests": 29}, {"Date": "2012-11-29", "# of Arrests": 36}, {"Date": "2012-11-30", "# of Arrests": 35}]}};
+  var embedOpt = {"mode": "vega-lite"};
 
-<!-- <h3>Denver Policing Data (November, 2012)</h3>
+  function showError(el, error){
+      el.innerHTML = ('<div class="error" style="color:red;">'
+                      + '<p>JavaScript Error: ' + error.message + '</p>'
+                      + "<p>This usually means there's a typo in your chart specification. "
+                      + "See the javascript console for the full traceback.</p>"
+                      + '</div>');
+      throw error;
+  }
+  const el = document.getElementById('vis');
+  vegaEmbed("#vis", spec, embedOpt)
+    .catch(error => showError(el, error));
+})(vegaEmbed);
+
+</script>
+
+<p>Given the above visual, there was an overwhelming amount of arrests made in the first two days of November. This may be the result of the fact that Halloween occurs on October 31st so there may arrests being made in relation to crimes committed then.</p>
+<p>Another cool finding is that the day that had the lowest number of arrests was Thanksgiving which was on November 22nd that year. This makes a lot of sense since presumably most people were staying at home/indoors with friends/family as opposed to breaking some laws.</p>
+<p>Furthermore, it is worth mentioning the fact that arrest numbers quickly increase the subsequent day on Black Friday. Good ol' American consumerism.</p>
+<p>That said, all of these changes in arrest numbers may not be the exlusive result of more/less crime, rather more/less police presence. Moving forward, it would be interesting to dig deeper into the data and attempt to find trends across days of the week and/or hours of the day via a heatmap to reflect these changes in crime and/or police presence.</p>
+    
+<br>
+<br>
 <br>
     
-<p>Data analysis code <a href="">here</a></p>    
-<p>Then you should write a few sentences briefly describing your code. Be sure to briefly specify how you performed filtering and aggregation.<\p>
+<p>The data analysis code can found <a href="/wa8_code_site.html">here</a>!</p>   
 
-
-<p>Placeholder Text:</p>    
+<p>Code Description:</p>
 <ul>
-    <li>Abc. </li>
-    <li>Abc. </li>
-</ul> -->
+    <li>Uses Pandas to read the policing data csv file in</li>
+    <li>Uses the groupby method and the Grouper function on the newly imported data group/filter the data by each row's "date" column value</li>
+    <li>These "date" groups are then aggregated to determine the total number of arrests made for each date. In other words, the sum number of arrests each day of November </li>
+    <li>A lil' bit of Dataframe manipulation so it was buttered up like a biscuit for some classic data viz action</li>
+</ul>
     
 </body>
 </html>
