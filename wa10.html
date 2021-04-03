@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Weekly Assignment 10</title>
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/reset.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/reveal.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/theme/black.min.css" id="theme">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/plugin/highlight/monokai.min.css" id="highlight-theme">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h3>Weekly Assignment 10</h3>
+					<p style="color:#CFB87C; font-weight:bold;">How to add media to Reveal.js slides via an iframe</p>
+				</section>
+
+				<section>
+
+					<h5 style="color:#CFB87C">Why use an iframe to embed media?</h5>
+                    <p class="fragment">Great question! I'm so glad you asked. </p>
+                    <p class="fragment">An iframe (inline frame) is an easy way to implement an external document inside of the current HTML document.</p>
+                    <p class="fragment">In this case, our HTML document is our Reveal.js slide deck.</p>
+				</section>
+                
+                <section>
+
+                    <section>
+                        <h5 style="color:#CFB87C">Below is an example</h5>
+                    </section>
+                    
+                    <section data-background-iframe="https://mehulkp.github.io/wa6.html" data-background-interactive>
+                    </section>	
+                    
+                </section>	
+                
+                <section>
+
+                    <section>
+                        <p style="color:#CFB87C">Now, here's how to do that!</p>
+                    </section>	
+                    
+                    <section>
+						<p>First add a section element using section tags which will function as your slide</p>
+						<pre><code class="html" data-trim data-line-numbers=1,3>
+                            <section>
+                                <iframe data-src="https://hakim.se" data-preload></iframe>
+                            </section>
+						</code></pre>
+					</section>
+                    
+                   <section>
+						<p>Then specify your media source within an iframe element </p>
+						<pre><code class="html" data-trim data-line-numbers=2>
+                            <section>
+                                <iframe data-src="https://www.google.com/" data-preload></iframe>
+                            </section>
+						</code></pre>
+					</section>
+                    
+                </section>	
+
+
+				<section>
+                    <p style="color:#CFB87C"><b>Need more Reveal.js documentation?</p></b>
+					<ul>
+						<li><a href="https://revealjs.com/media/">Embedding media (in general)</a></li>
+						<li><a href="https://revealjs.com/media/#lazy-loading">Lazy loading iframes</a></li>
+						<li><a href="https://revealjs.com/backgrounds/#iframe-backgrounds">Avoiding iframe size constraints</a></li>
+					</ul>
+					<p>Happy coding!</p>
+				</section>
+
+				
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/reveal.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/plugin/notes/notes.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/plugin/highlight/highlight.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/plugin/math/math.min.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				slideNumber: 'h/v',
+				math: {
+				      mathjax: 'https://cdn.jsdelivr.net/gh/mathjax/mathjax@2.7.8/MathJax.js',
+				      config: 'TeX-AMS_HTML-full',
+				      // pass other options into `MathJax.Hub.Config()`
+				      TeX: { Macros: { RR: "{\\bf R}" } }
+				    },
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealHighlight, RevealNotes, RevealMath ]
+			});
+		</script>
+	</body>
+</html>
