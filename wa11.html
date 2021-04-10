@@ -1,0 +1,209 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Weekly Assignment 11</title>
+
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/reset.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/reveal.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/css/theme/white.min.css" id="theme">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/plugin/highlight/monokai.min.css" id="highlight-theme">
+		<script src="https://cdn.jsdelivr.net/npm/vega@3"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vega-lite@2"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vega-embed@3"></script>	
+	
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h4>Weekly Assignment 11</h4>
+					<p style="color:#CFB87C; font-weight:bold;"><strong>Doing the Absolute Bare Minimum:</strong></p>
+					<p style="color:#CFB87C;">The Classic Tale of Senioritis</p>
+					<p>⸻</p>
+					<p>Let's learn about car weights!</p>
+					<p>Such a titillating topic, isn't it?</p>
+				</section>
+
+				<section>
+					<section>
+						<p>Oh wow, there is a correlation between the weight of a car and its horsepower. As the weight ↑, horsepower also ↑. This makes sense since you need more units of power to move more units of mass.</p>
+						<div id="vis0"></div>
+						<script type="text/javascript">
+							var spec = {
+							"$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+							"config": {
+								"view": {
+								"continuousHeight": 300,
+								"continuousWidth": 400
+								}
+							},
+							"data": {
+								"url": "https://vega.github.io/vega-datasets/data/cars.json"
+							},
+							"encoding": {
+								"color": {
+								"field": "",
+								"type": "nominal"
+								},
+								"x": {
+								"field": "Horsepower",
+								"type": "quantitative"
+								},
+								"y": {
+								"field": "Weight_in_lbs",
+								"type": "quantitative"
+								}
+							},
+							"mark": "point"};  /* JSON dump of your chart's spec */
+							var opt = {"renderer": "canvas", "actions": false};  /* Options for the embedding */
+							vegaEmbed("#vis0", spec, opt);
+						</script>
+						<p> Click below to see the JavaScript code that created this Vega-powered visualization</p>
+					</section>
+
+					<section>
+						<pre><code class="javascript" data-trim data-line-numbers=>
+							var spec = {
+							"$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+							"config": {
+								"view": {
+								"continuousHeight": 300,
+								"continuousWidth": 400
+								}
+							},
+							"data": {
+								"url": "https://vega.github.io/vega-datasets/data/cars.json"
+							},
+							"encoding": {
+								"color": {
+								"field": "",
+								"type": "nominal"
+								},
+								"x": {
+								"field": "Horsepower",
+								"type": "quantitative"
+								},
+								"y": {
+								"field": "Weight_in_lbs",
+								"type": "quantitative"
+								}
+							},
+							"mark": "point"};  /* JSON dump of your chart's spec */
+							var opt = {"renderer": "canvas", "actions": false};  /* Options for the embedding */
+						</code></pre>
+					</section>
+
+				</section>
+
+				<section>
+					<p>Let's look at car weights from a different perspective</p>
+				</section>
+				
+				<section>
+					<section>
+						<p>Oh wow, the average weight of cars has prominently been decreasing over the last few decades. This makes sense due to advancements in the realms of engineering and material science. </p>
+						<div id="vis1"></div>
+						<script type="text/javascript">
+							var spec = {
+							"$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+							"config": {
+								"view": {
+								"continuousHeight": 300,
+								"continuousWidth": 400
+								}
+							},
+							"data": {
+								"url": "https://vega.github.io/vega-datasets/data/cars.json"
+							},
+							"encoding": {
+								"color": {
+								"field": "",
+								"type": ""
+								},
+								"x": {
+								"field": "Year",
+								"type": "temporal"
+								},
+								"y": {
+								"aggregate": "mean", 
+								"field": "Weight_in_lbs",
+								"type": "quantitative"
+								}
+							},
+							"mark": "line"};  /* JSON dump of your chart's spec */
+							var opt = {"renderer": "canvas", "actions": false};  /* Options for the embedding */
+							vegaEmbed("#vis1", spec, opt);
+						</script>
+						<p> Click below to see the JavaScript code that created this Vega-powered visualization</p>
+					</section>
+
+					<section>
+						<pre><code class="javascript" data-trim data-line-numbers=>
+							var spec = {
+							"$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+							"config": {
+								"view": {
+								"continuousHeight": 300,
+								"continuousWidth": 400
+								}
+							},
+							"data": {
+								"url": "https://vega.github.io/vega-datasets/data/cars.json"
+							},
+							"encoding": {
+								"color": {
+								"field": "",
+								"type": ""
+								},
+								"x": {
+								"field": "Year",
+								"type": "temporal"
+								},
+								"y": {
+								"aggregate": "mean", 
+								"field": "Weight_in_lbs",
+								"type": "quantitative"
+								}
+							},
+							"mark": "line"};  /* JSON dump of your chart's spec */
+							var opt = {"renderer": "canvas", "actions": false};  /* Options for the embedding */
+						</code></pre>
+					</section>
+
+				</section>
+
+
+
+				<section>
+					<p>Tyty for sticking through this. It was as painful for me to do as I imagine it was for you to look at it.</p>
+					<p>Take care and good luck w whatever u got going on today rockstar</p>
+				</section>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/reveal.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/plugin/notes/notes.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/plugin/highlight/highlight.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/plugin/math/math.min.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				slideNumber: 'h/v',
+				math: {
+				      mathjax: 'https://cdn.jsdelivr.net/gh/mathjax/mathjax@2.7.8/MathJax.js',
+				      config: 'TeX-AMS_HTML-full',
+				      // pass other options into `MathJax.Hub.Config()`
+				      TeX: { Macros: { RR: "{\\bf R}" } }
+				    },
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealHighlight, RevealNotes, RevealMath ]
+			});
+		</script>
+	</body>
+</html>
